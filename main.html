@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yasra Ayman Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #fefefe;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(90deg, #fcb1b1, #ffd6e0);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 24px;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ff3366;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease forwards;
+    }
+    .box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .education ul, .skills ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    li {
+      background: #f4f4f4;
+      padding: 10px;
+      border-left: 4px solid #ff99aa;
+      list-style: none;
+    }
+    .projects .project {
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #ff99aa;
+      margin-top: 15px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .projects .project:hover {
+      transform: translateY(-5px);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    form button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff99aa;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #ff3366;
+    }
+    footer {
+      text-align: center;
+      background: #fcb1b1;
+      padding: 20px;
+      margin-top: 40px;
+      color: #222;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 10px;
+      }
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Yasra Ayman</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="box" id="about">
+    <h2>About Me</h2>
+    <p>I'm a Computer Science student with a growing interest in frontend development. I'm looking for an internship where I can work on real-world projects and build my skills.</p>
+  </section>
+
+  <section class="box education" id="education">
+    <h2>Education</h2>
+    <ul>
+      <li><strong>B.E. Computer Science Engineering</strong> - Jeppiaar Institute of Technology (2023–2027)</li>
+    </ul>
+  </section>
+
+  <section class="box skills" id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Java</li>
+      <li>C</li>
+      <li>Visual Studio Code</li>
+      <li>Teamwork</li>
+      <li>Communication</li>
+    </ul>
+  </section>
+
+  <section class="box projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Flipkart Front Page Clone</h3>
+      <p>Built using HTML, CSS, and JavaScript for UI practice and responsive layout techniques.</p>
+    </div>
+    <div class="project">
+      <h3>Amazon Front Page Clone</h3>
+      <p>Recreated key elements of Amazon's homepage layout using web technologies to strengthen frontend skills.</p>
+    </div>
+  </section>
+
+  <section class="box contact" id="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="return validateForm()">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>📞 +91 99408 99348 | 📧 yasraayman27@gmail.com | 📍 Kanchipuram</p>
+    <p>&copy; 2025 Yasra Ayman | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function validateForm() {
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill out all fields.');
+        return false;
+      }
+      alert('Message sent successfully!');
+      return true;
+    }
+
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
